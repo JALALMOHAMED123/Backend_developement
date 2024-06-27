@@ -5,8 +5,11 @@ const app=express();
 
 const adminroutes=require('./routes/admin');
 const shoproutes=require('./routes/shop');
+const login=require('./routes/login');
 
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(login);
 
 app.use('/admin',adminroutes);
 
