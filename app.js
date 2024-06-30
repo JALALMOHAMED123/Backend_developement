@@ -3,7 +3,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app=express();
 const errorController = require('./controllers/error');
-
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 const adminroutes=require('./routes/admin');
 const shoproutes=require('./routes/shop');
 const login=require('./routes/login');

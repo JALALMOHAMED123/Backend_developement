@@ -1,16 +1,50 @@
-const path=require('path');
-const rootDir=require('../util/path');
-const products = [];
+// const path=require('path');
+// const rootDir=require('../util/path');
+// const Product = require('../models/product');
 
-exports.getAddProduct = (req,res,next)=>{
-  res.sendFile(path.join(__dirname,'../', 'views', 'add-product.html'));
-}
+// exports.getAddProduct = (req,res,next)=>{
+//   res.sendFile(path.join(__dirname,'../', 'views', 'add-product.html'));
+// }
 
-exports.postAddProduct =  (req, res, next) => {
-  console.log(req.body);
+// exports.postAddProduct =  (req, res, next) => {
+//   const product = new Product(req.body.title);
+//   product.save();
+//   res.redirect('/shop');
+// };
+
+// exports.getProducts =  (req, res) => {
+//   const products = Product.fetchAll();
+//   res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+// };
+
+const Product = require('../models/product');
+
+exports.getAddProduct = (req, res, next) => {
+  res.render('add-product', {
+    pageTitle: 'Add Product',
+    path: '/admin/add-product',
+    formsCSS: true,
+    productCSS: true,
+    activeAddProduct: true
+  });
+};
+
+exports.postAddProduct = (req, res, next) => {
+  const product = new Product(req.body.title);
+  product.save();
   res.redirect('/shop');
 };
 
-exports.getProducts =  (req, res) => {
-  res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+exports.getProducts = (req, res, next) => {
+  Product.fetchAll(products => {
+    res.render('shop', {
+      prods: products,
+      pageTitle: 'Shop',
+      path: '/',
+      hasProducts: products.length > 0,
+      activeShop: true,
+      productCSS: true
+    });
+  });
 };
+
