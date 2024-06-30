@@ -10,3 +10,8 @@ const Student={
     }
 }
 Student.fun();
+function call(...args){
+    console.log(args);
+}
+call(1,2,true,'string');
+

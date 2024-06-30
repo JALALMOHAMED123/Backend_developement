@@ -15,7 +15,7 @@
 }
 
 .form-control input {
-    border: 3px solid #0e0d0d;
+    border: 3px solid #707677;
     font: inherit;
     border-radius: 5px;
 }
@@ -23,9 +23,9 @@
 button {
     padding: 8px;
     font: inherit;
-    border: 1px solid #080808;
+    border: 1px solid #707677;
     color: #f8f6fa;
-    background: rgb(12, 12, 12);
+    background: #404242;
     border-radius: 5px;
     cursor: pointer;
 }
